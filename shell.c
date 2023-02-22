@@ -25,10 +25,14 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 		line = readline(&eof);
 		if (eof == -1)
 		{
+			free(args);
+			free(line);
 			exit(EXIT_SUCCESS);
 		}
 		args = tokenize(line);
 		status = hsh_execute(args, env, argv[0]);
+		free(args);
+		free(line);
 	}
 	return (1);
 }
