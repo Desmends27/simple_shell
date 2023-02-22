@@ -34,8 +34,8 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv
 		args = tokenize(line);
 		/*lauch the command*/
 		status = launch(args, env, argv[0]);
-		free(args);
 		free(line);
+		free(args);
 	}
 	return (1);
 }
