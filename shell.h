@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef SHELL_H
+#define SHELL_H
 #include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
@@ -9,9 +9,8 @@
 #include <sys/wait.h>
 #include <dirent.h>
 #include <sys/stat.h>
-char *hsh_readline();
+char *readline(int *eof);
 char **tokenize(char *line);
 int launch(char **args, char **env, char *argv);
-char *file_check(char *args);
-int execute(char **args);
 #endif
+

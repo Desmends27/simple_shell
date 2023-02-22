@@ -37,10 +37,10 @@ char **tokenize(char *line)
 				printf("allocation error\n");
 				exit(EXIT_FAILURE);
 			}
-
 		}
 		token = strtok(NULL, DELIM);
 	}
 	toks[position] = NULL;
 	return (toks);
 }
+

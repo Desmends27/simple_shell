@@ -1,40 +1,34 @@
 #include "shell.h"
 /**
- * main - calls to function to start the shell
+ * main - loop of the shell program
  * @argc: argument count
  * @argv: argument vector
- * @env: environ variable
+ * @env: environment variable
  * Return: 1 always
+ *
  */
-int main(__attribute__((unused))int argc, __attribute__((unused))char **argv
-		, char **env)
+int main(__attribute__((unused))int argc, char **argv, char **env)
 {
 	char *line;
+	char **args;
 	int status = 1;
 	int mode;
-	char **args;
+	int eof;
 
-	/* loop to initiate the shell */
 	while (status)
 	{
-		/*check for interacitive mode*/
 		mode = isatty(STDIN_FILENO);
 		if (mode != 0)
 		{
 			write(STDOUT_FILENO, "$ ", 3);
 		}
-		line = strdup(hsh_readline());
-		if (line == NULL)
+		line = readline(&eof);
+		if (eof == -1)
 		{
-			printf("\n");
-			break;
+			exit(EXIT_SUCCESS);
 		}
-		/* tokenize the string */
 		args = tokenize(line);
-		/*lauch the command*/
 		status = launch(args, env, argv[0]);
-		free(line);
-		free(args);
 	}
 	return (1);
 }
