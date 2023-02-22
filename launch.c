@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * launch - calls the function to be executed
  * @args: function to be excuted passed as tokens
@@ -12,11 +12,9 @@ int launch(char **args, char **env, char *argv)
 	int status;
 
 	/* fork if command is found */
-	/*
-	 * args[0] = file_check(args[0]);
-	 * if (args[0] != NULL)
-	 */
-	pid = fork();
+	args[0] = file_check(args[0]);
+	if (args[0] != NULL)
+		pid = fork();
 	if (pid == 0)
 	{
 		/*child process*/

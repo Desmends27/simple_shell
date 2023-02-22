@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * tokenize - uses strtok to tokenize the string
  * Return: pointer to an array of char *

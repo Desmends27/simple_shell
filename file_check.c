@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * file_check - checks for commands in /bin
  * @args: command to be searched for

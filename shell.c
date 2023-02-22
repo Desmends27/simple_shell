@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * main - calls to function to start the shell
  * @argc: argument count
@@ -26,9 +26,8 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv
 		line = strdup(hsh_readline());
 		if (line == NULL)
 		{
-			free(line);
 			printf("\n");
-			exit(1);
+			break;
 		}
 		/* tokenize the string */
 		args = tokenize(line);

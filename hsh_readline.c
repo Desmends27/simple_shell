@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * hsh_readline - reads the line to be inputed
  * @argv:
