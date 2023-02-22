@@ -12,5 +12,6 @@
 char *readline(int *eof);
 char **tokenize(char *line);
 int launch(char **args, char **env, char *argv);
+char *file_check(char *args);
 #endif
 

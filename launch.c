@@ -8,16 +8,18 @@
  */
 int launch(char **args, char **env, char *argv)
 {
-	pid_t pid, __attribute__((unused))wpid;
+	pid_t pid = 0, __attribute__((unused))wpid;
 	int status;
 
-	pid = fork();
+	args[0] = file_check(args[0]);
+	if (args[0] != NULL)
+		pid = fork();
 	if (pid == 0)
 	{
 		/*child process*/
 		if (execve(args[0], args, env) == -1)
 		{
-			perror(argv);
+			printf("%s: No such file or directory\n", argv);
 			return (1);
 		}
 	}
