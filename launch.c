@@ -8,13 +8,15 @@
  */
 int launch(char **args, char **env, char *argv)
 {
-	pid_t pid = 0, __attribute__((unused))wpid;
+	pid_t pid, __attribute__((unused))wpid;
 	int status;
 
 	/* fork if command is found */
-	args[0] = file_check(args[0]);
-	if (args[0] != NULL)
-		pid = fork();
+	/*
+	 * args[0] = file_check(args[0]);
+	 * if (args[0] != NULL)
+	 */
+	pid = fork();
 	if (pid == 0)
 	{
 		/*child process*/
