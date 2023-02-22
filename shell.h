@@ -12,6 +12,10 @@
 char *readline(int *eof);
 char **tokenize(char *line);
 int launch(char **args, char **env, char *argv);
+int hsh_execute(char **args, char **env, char *argv);
 char *file_check(char *args);
+
+int hsh_exit(char **args);
+int hsh_env(char **args);
 #endif
 

@@ -28,7 +28,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			exit(EXIT_SUCCESS);
 		}
 		args = tokenize(line);
-		status = launch(args, env, argv[0]);
+		status = hsh_execute(args, env, argv[0]);
 	}
 	return (1);
 }
