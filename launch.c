@@ -8,18 +8,20 @@
  */
 int launch(char **args, char **env, char *argv)
 {
-	pid_t pid, __attribute__((unused))wpid;
+	pid_t pid = 0, __attribute__((unused))wpid;
 	int status;
 
-	pid = fork();
+	/* fork if command is found */
+	args[0] = file_check(args[0]);
+	if (args[0] != NULL)
+		pid = fork();
 	if (pid == 0)
 	{
 		/*child process*/
 		if (execve(args[0], args, env) == -1)
 		{
-			free(args);
 			perror(argv);
-			exit(EXIT_FAILURE);
+			return (1);
 		}
 	}
 	else if (pid < 0)
@@ -27,6 +29,7 @@ int launch(char **args, char **env, char *argv)
 		/*fork error*/
 		free(args);
 		perror(argv);
+		return (1);
 	}
 	else
 	{
@@ -37,3 +40,4 @@ int launch(char **args, char **env, char *argv)
 	}
 	return (1);
 }
+

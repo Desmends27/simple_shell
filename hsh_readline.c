@@ -29,6 +29,6 @@ char *hsh_readline()
 	if ((len > 0) && (line[len - 1] == '\n'))
 	{
 		line[len - 1] = '\0';
-}
+	}
 	return (line);
 }
