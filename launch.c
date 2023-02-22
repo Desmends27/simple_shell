@@ -20,7 +20,7 @@ int launch(char **args, char **env, char *argv)
 		/*child process*/
 		if (execve(args[0], args, env) == -1)
 		{
-			perror(argv);
+			printf("%s: No such file or directory\n", argv);
 			return (1);
 		}
 	}
