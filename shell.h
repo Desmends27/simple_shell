@@ -17,5 +17,6 @@ char *file_check(char *args);
 
 int hsh_exit(char **args);
 int hsh_env(char **args);
+int hsh_cd(char **args);
 #endif
 

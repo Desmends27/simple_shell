@@ -1,11 +1,13 @@
 #include "shell.h"
 static char *builtin_str[] = {
 	"exit",
-	"env"
+	"env",
+	"cd"
 };
 int (*builtin_func[])(char **) = {
 	&hsh_exit,
-	&hsh_env
+	&hsh_env,
+	&hsh_cd
 };
 /**
  * lsh_num_builtins - return the index
@@ -42,6 +44,17 @@ int hsh_env(char **args)
 		printf("%s\n", *env);
 		env++;
 	}
+	return (1);
+}
+/**
+ * hsh_cd - cd command
+ * @args: argument count
+ * Return: 1;
+ */
+int hsh_cd(char **args)
+{
+	if (args != NULL)
+		chdir(args[1]);
 	return (1);
 }
 /**
